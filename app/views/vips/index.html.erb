@@ -1,0 +1,37 @@
+<h1>M0d3rn VIP</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Confirm email</th>
+      <th>Birthday</th>
+      <th>Zip code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vips.each do |vip| %>
+      <tr>
+        <td><%= vip.first_name %></td>
+        <td><%= vip.last_name %></td>
+        <td><%= vip.email %></td>
+        <td><%= vip.confirm_email %></td>
+        <td><%= vip.birthday %></td>
+        <td><%= vip.zip_code %></td>
+        <td><%= link_to 'Show', vip %></td>
+        <td><%= link_to 'Edit', edit_vip_path(vip) %></td>
+        <td><%= link_to 'Destroy', vip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vip', new_vip_path %>

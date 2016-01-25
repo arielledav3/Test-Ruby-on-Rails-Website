@@ -1,0 +1,36 @@
+<p> <h1>Search</h1> </p>
+
+<%= form_tag :action => 'search' do %>
+	<p>What is Promotions's title?: 
+	<%= text_field_tag 'title', @title %> </p>
+		<hr/>
+	<% if @results>0 %>
+		<% if @promolist.length >0 %>
+			<p> Here is the search results:</p>
+			<p>
+			<table>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Image Path</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+			</tr>
+			<% @promolist.each do |promotion| %>
+				<tr>
+				<td><%= link_to promotion.title, promotions_path(promotion.id) %></td>
+				<td><%= promotion.description %></td>
+				<td><%= promotion.image_path %></td>
+				<td><%= promotion.start_date %></td>
+				<td><%= promotion.end_date %></td>
+				</tr>
+			<% end %>
+			</table>
+
+		<% else%>
+			<p>There was an error in retrieving data. Try again!</p>
+		<% end %>
+	<% end %>
+	
+	<%= submit_tag 'Send' %>
+<% end %>
